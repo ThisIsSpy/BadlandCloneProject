@@ -8,14 +8,14 @@ namespace LevelGenerator
     public class RandomLevelGenerator : MonoBehaviour
     {
         private LevelSectionPool _pool;
-        private Object _startSection;
-        private Object _endSection;
-        private Object _startingPoint;
+        private LevelSection _startSection;
+        private LevelSection _endSection;
+        private Transform _startingPoint;
         private int _maxLevelLength;
         private int _difficulty;
 
 
-        public void Construct(LevelSectionPool pool, int maxLevelLength, Object startSection, Object endSection, Object startingPoint, int difficulty)
+        public void Construct(LevelSectionPool pool, int maxLevelLength, LevelSection startSection, LevelSection endSection, Transform startingPoint, int difficulty)
         {
             _pool = pool;
             _maxLevelLength = maxLevelLength;
@@ -35,7 +35,7 @@ namespace LevelGenerator
             {
                 levelLength = _difficulty;
             }
-            Vector3 generatingPos = _startingPoint.GameObject().transform.position;
+            Vector3 generatingPos = _startingPoint.position;
             Instantiate(_startSection, generatingPos, Quaternion.identity);
             generatingPos.x += 22f;
             for (int i = 0; i < levelLength; i++)

@@ -13,13 +13,15 @@ namespace PlayerSystem
         public event System.Action OnDeath;
         public event System.Action OnReachFinish;
         private float distToGround;
+        private float rotateSpeed;
+        private float rotateToDefaultSpeed;
         private IEnumerator RotateToDefaultCoroutine()
         {
             float time = 0;
             while (time < 1)
             {
                 rb.transform.rotation = Quaternion.Slerp(rb.transform.rotation, Quaternion.identity, time);
-                time += Time.deltaTime * 1.2f;
+                time += Time.deltaTime * rotateToDefaultSpeed;
                 yield return null;
             }
         }
@@ -43,7 +45,7 @@ namespace PlayerSystem
         {
             if(IsGrounded())
             {
-                rb.angularVelocity += 1f;
+                rb.angularVelocity += rotateSpeed;
             }
         }
         private void Death()
@@ -54,10 +56,12 @@ namespace PlayerSystem
         {
             OnReachFinish?.Invoke();
         }
-        public void Construct(Rigidbody2D rb, float distToGround, CollisionDetector collisionDetector)
+        public void Construct(Rigidbody2D rb, float distToGround, float rotateSpeed, float rotateToDefaultSpeed, CollisionDetector collisionDetector)
         {
             this.rb = rb;
             this.distToGround = distToGround;
+            this.rotateSpeed = rotateSpeed;
+            this.rotateToDefaultSpeed = rotateToDefaultSpeed;
             this.collisionDetector = collisionDetector;
             this.collisionDetector.OnDeath += Death;
             this.collisionDetector.OnReachFinish += ReachFinish;

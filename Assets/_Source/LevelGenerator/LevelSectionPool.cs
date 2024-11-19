@@ -7,24 +7,24 @@ namespace LevelGenerator
 {
     public class LevelSectionPool
     {
-        private Queue<Object> _levelSectionPool;
+        private Queue<LevelSection> _levelSectionPool;
 
-        public LevelSectionPool(List<Object> levelSectionPrefabList)
+        public LevelSectionPool(List<LevelSection> levelSectionPrefabList)
         {
             InitPool(levelSectionPrefabList);
         }
-        private void InitPool(List<Object> levelSectionPrefabList)
+        private void InitPool(List<LevelSection> levelSectionPrefabList)
         {
             _levelSectionPool = new();
             System.Random rand = new();
-            List<Object> list = levelSectionPrefabList.OrderBy((item) => rand.Next()).ToList();
+            List<LevelSection> list = levelSectionPrefabList.OrderBy((item) => rand.Next()).ToList();
             for (int i = 0; i < list.Count; i++)
             {
-                Object levelSection = Object.Instantiate(list[i]);
+                LevelSection levelSection = Object.Instantiate(list[i]);
                 _levelSectionPool.Enqueue(levelSection);
             }
         }
-        public bool TryGetLevelSection(out Object levelSection)
+        public bool TryGetLevelSection(out LevelSection levelSection)
         {
             levelSection = null;
             if (_levelSectionPool.Count > 0)
@@ -34,7 +34,7 @@ namespace LevelGenerator
             }
             return false;
         }
-        public void ReturnToPool(Object LevelSection)
+        public void ReturnToPool(LevelSection LevelSection)
         {
             _levelSectionPool.Enqueue(LevelSection);
         }

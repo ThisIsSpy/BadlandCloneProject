@@ -437,23 +437,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 7176164080742438677, guid: ce29c3d5ed2092444b2743c433d18fb5, type: 3}
-  startSection: {fileID: 9184579609965263131, guid: 981dd401d6a936d4aaf54d845cfcc3f5, type: 3}
-  endSection: {fileID: 5918627605416545319, guid: fa1f1a81b748aeb4b8b97657eddfdb8e, type: 3}
-  startingPoint: {fileID: 499744699}
+  startSection: {fileID: -5094684864592644843, guid: 981dd401d6a936d4aaf54d845cfcc3f5, type: 3}
+  endSection: {fileID: 2958031866697738091, guid: fa1f1a81b748aeb4b8b97657eddfdb8e, type: 3}
+  startingPoint: {fileID: 499744700}
   flyingSpeed: 0.75
   movingSpeed: 0.05
+  rotateSpeed: 1
+  rotateToDefaultSpeed: 1.2
+  increaseMult: 1.2
+  decreaseMult: 0.8
   inputListener: {fileID: 771362601}
   sceneManager: {fileID: 883349528}
   mainCamera: {fileID: 519420031}
   levelSectionList:
-  - {fileID: 3726487388775242605, guid: a58532416b1532346b1910ba438cb6ad, type: 3}
-  - {fileID: 3726487388775242605, guid: a58532416b1532346b1910ba438cb6ad, type: 3}
-  - {fileID: 1841829883496941136, guid: cf3dc158954763749a59b7e32911c17e, type: 3}
-  - {fileID: 1841829883496941136, guid: cf3dc158954763749a59b7e32911c17e, type: 3}
-  - {fileID: 1904295232850607866, guid: 5906768b60dcc19469fddeaf996a1888, type: 3}
-  - {fileID: 1904295232850607866, guid: 5906768b60dcc19469fddeaf996a1888, type: 3}
-  - {fileID: 5178348100861670547, guid: 92b3cc79acc9cd045a4230a9f7ee5293, type: 3}
-  - {fileID: 5178348100861670547, guid: 92b3cc79acc9cd045a4230a9f7ee5293, type: 3}
+  - {fileID: -3929420992729370502, guid: a58532416b1532346b1910ba438cb6ad, type: 3}
+  - {fileID: -3929420992729370502, guid: a58532416b1532346b1910ba438cb6ad, type: 3}
+  - {fileID: 8824725873240147285, guid: cf3dc158954763749a59b7e32911c17e, type: 3}
+  - {fileID: 8824725873240147285, guid: cf3dc158954763749a59b7e32911c17e, type: 3}
+  - {fileID: 4510091940444339822, guid: 5906768b60dcc19469fddeaf996a1888, type: 3}
+  - {fileID: 4510091940444339822, guid: 5906768b60dcc19469fddeaf996a1888, type: 3}
+  - {fileID: 1329910277738331351, guid: 92b3cc79acc9cd045a4230a9f7ee5293, type: 3}
+  - {fileID: 1329910277738331351, guid: 92b3cc79acc9cd045a4230a9f7ee5293, type: 3}
   randomLevelGenerator: {fileID: 797994112}
   gameOverPanel: {fileID: 130248600}
   scoreManager: {fileID: 2045346720}
@@ -1294,6 +1298,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80ac08e509679f947a3437291be813aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PowerupScore: 500
+  LevelFinishScore: 1000
   scoreText: {fileID: 1424962889}
   levelText: {fileID: 1720543756}
 --- !u!4 &2045346721

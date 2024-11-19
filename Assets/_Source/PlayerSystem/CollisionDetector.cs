@@ -12,6 +12,8 @@ namespace PlayerSystem
         private Rigidbody2D rb;
         private PlayerView view;
         private ScoreManager scoreManager;
+        private float increaseMult;
+        private float decreaseMult;
         public event System.Action OnDeath;
         public event System.Action OnReachFinish;
 
@@ -27,8 +29,8 @@ namespace PlayerSystem
             {
                 if (gameObject.transform.localScale.x < 2)
                 {
-                    gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x * 1.2f, gameObject.transform.localScale.y * 1.2f, 1);
-                    rb.mass *= 1.2f;
+                    gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x * increaseMult, gameObject.transform.localScale.y * increaseMult, 1);
+                    rb.mass *= increaseMult;
                     scoreManager.AddToScore(scoreManager.PowerupScore);
                     Destroy(collision.gameObject);
                 }
@@ -37,8 +39,8 @@ namespace PlayerSystem
             {
                 if (gameObject.transform.localScale.x > 0.1f)
                 {
-                    gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x * 0.8f, gameObject.transform.localScale.y * 0.8f, 1);
-                    rb.mass *= 0.8f;
+                    gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x * decreaseMult, gameObject.transform.localScale.y * decreaseMult, 1);
+                    rb.mass *= decreaseMult;
                     scoreManager.AddToScore(scoreManager.PowerupScore);
                     Destroy(collision.gameObject);
                 }
@@ -55,11 +57,13 @@ namespace PlayerSystem
                 OnReachFinish?.Invoke();
             }
         }
-        public void Construct(Rigidbody2D rb, PlayerView view, ScoreManager scoreManager)
+        public void Construct(Rigidbody2D rb, PlayerView view, ScoreManager scoreManager, float increaseMult, float decreaseMult)
         {
             this.rb = rb;
             this.view = view;
             this.scoreManager = scoreManager;
+            this.increaseMult = increaseMult;
+            this.decreaseMult = decreaseMult;
         }
     }
 }
